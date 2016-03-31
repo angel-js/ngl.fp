@@ -33,7 +33,7 @@ angular.module('app', [ 'ngl.fp' ]);
 API
 ---
 
-### `reduce(iteratee, acc, list) -> value`
+### `reduce(iteratee, acc, list) -> acc`
 
 Returns a new value created by applying `iteratee` to each `list` item with
 a provided accumulator (`acc`)
@@ -65,7 +65,7 @@ var numbers = [ 1, 2, 3, 4 ];
 filter(even, numbers) // [ 2, 4 ]
 ```
 
-### `partial(fn, args...) -> fn`
+### `partial(fn, args...) -> function`
 
 Returns a new function created by applying `fn` to the provided partial `args`
 
@@ -75,7 +75,7 @@ var mult2 = partial(multiply, 2);
 mult2(5) // 10
 ```
 
-### `merge(objects...)`
+### `merge(objects...) -> object`
 
 Returns a new object created by shallow merging left to right the provided
 objects
@@ -87,7 +87,7 @@ bar // { x: 1, y: 20, z: 2 }
 foo === bar // false
 ```
 
-### `copy(object)`
+### `copy(object) -> object`
 
 (Alias of `merge`)
 
