@@ -1,0 +1,5 @@
+{
+  "name": "ngl.fp",
+  "description": "Functional Programming helpers for Angular 1.x",
+  "license": "MIT"
+}

@@ -8,8 +8,8 @@ Usage
 
 ```js
 var multiply = function (x, y) { return x * y };
-var mult2 = fpPartial(multiply, 2);
-var double = fpPartial(fpMap, mult2);
+var mult2 = partial(multiply, 2);
+var double = partial(map, mult2);
 double([ 1, 2, 3, 4 ]); // [ 2, 4, 6, 8 ]
 ```
 
@@ -33,60 +33,69 @@ angular.module('app', [ 'ngl.fp' ]);
 API
 ---
 
-### `fpPartial(fn, args...) -> fn`
+### `reduce(iteratee, acc, list) -> value`
 
-Returns a function with `args...` partially aplied
-
-```js
-var multiply = function (x, y) { return x * y };
-var mult2 = fpPartial(multiply, 2);
-mult2(5) // 10
-```
-
-### `fpMap(fn, list) -> list`
-
-Returns a new list created by applying `fn` to each `list` item
-
-```js
-var double = function (int) { return 2 * int; };
-var numbers = [ 1, 2, 3, 4 ];
-fpMap(double, numbers) // [ 2, 4, 6, 8 ]
-```
-
-### `fpReduce(fn, list) -> scalar`
-
-Returns a scalar value created by applying `iteratee` to each `list` item with
-an accumulator
+Returns a new value created by applying `iteratee` to each `list` item with
+a provided accumulator (`acc`)
 
 ```js
 var sum = function (a, b) { return a + b; };
 var numbers = [ 1, 2, 3, 4 ];
-fpReduce(sum, 0, numbers) // 10
+reduce(sum, 0, numbers) // 10
 ```
 
-### `fpCopy(obj)`
+### `map(iteratee, list) -> list`
 
-Returns a new object created by shallow copying the provided object
+Returns a new list created by applying `iteratee` to each `list` item
 
 ```js
-var x = {
-  foo: 'abc',
-  bar: [ 1, 2, 3 ]
-};
-
-var y = fpCopy(x);
-x === y // false
-x.bar === y.bar // true
+var double = function (int) { return 2 * int; };
+var numbers = [ 1, 2, 3, 4 ];
+map(double, numbers) // [ 2, 4, 6, 8 ]
 ```
 
-### `fpMerge(objs...)`
+### `filter(predicate, list) -> list`
+
+Returns a new list with the items which return true once `predicate` is applied
+to them
+
+```js
+var even = function (int) { return int % 2 === 0; };
+var numbers = [ 1, 2, 3, 4 ];
+filter(even, numbers) // [ 2, 4 ]
+```
+
+### `partial(fn, args...) -> fn`
+
+Returns a new function created by applying `fn` to the provided partial `args`
+
+```js
+var multiply = function (x, y) { return x * y };
+var mult2 = partial(multiply, 2);
+mult2(5) // 10
+```
+
+### `merge(objects...)`
 
 Returns a new object created by shallow merging left to right the provided
 objects
 
 ```js
 var foo = { x: 10, y: 20 };
-var bar = fpMerge(foo, { x: 1, z: 2 });
+var bar = merge(foo, { x: 1, z: 2 });
 bar // { x: 1, y: 20, z: 2 }
+foo === bar // false
+```
+
+### `copy(object)`
+
+(Alias of `merge`)
+
+Returns a new object created by shallow copying the provided object
+
+```js
+var foo = { x: 10, y: 20 };
+var bar = copy(foo);
+bar // { x: 10, y: 20 }
 foo === bar // false
 ```

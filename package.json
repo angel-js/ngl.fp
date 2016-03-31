@@ -1,0 +1,17 @@
+{
+  "name": "ngl.fp",
+  "description": "Functional Programming helpers for Angular 1.x",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-eslint": "*",
+    "del": "*"
+  },
+  "scripts": {
+    "setup": "npm install",
+    "upgrade": "npm update",
+    "lint":"gulp lint",
+    "test":"gulp test",
+    "build" : "gulp build"
+  }
+}
