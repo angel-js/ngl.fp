@@ -90,7 +90,7 @@
 })(function register (api) {
   'use strict';
 
-  var fp = angular.module('fp', []);
+  var fp = angular.module('ngl.fp', []);
 
   for (var method in api) {
     fp.factory(method, function () {
