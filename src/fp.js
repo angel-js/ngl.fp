@@ -75,16 +75,16 @@
   register({
 
     // list
-    reduce: reduce,
-    map: map,
-    filter: filter,
+    nglReduce: reduce,
+    ngglMap: map,
+    nglFilter: filter,
 
     // function
-    partial: partial,
+    nglPartial: partial,
 
     // lang
-    merge: merge,
-    copy: merge
+    nglMerge: merge,
+    nglCopy: merge
   });
 
 })(function register (api) {
