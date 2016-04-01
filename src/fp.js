@@ -76,7 +76,7 @@
 
     // list
     nglReduce: reduce,
-    ngglMap: map,
+    nglMap: map,
     nglFilter: filter,
 
     // function
