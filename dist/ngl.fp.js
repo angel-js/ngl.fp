@@ -98,11 +98,13 @@
 })(function register (api) {
   'use strict';
 
-  var fp = angular.module('ngl.fp', []);
+  var mod = angular.module('ngl.fp', []);
 
-  for (var method in api) {
-    fp.factory(method, function () {
+  var registerFactory = function (method) {
+    mod.factory(method, function () {
       return api[method];
     });
-  }
+  };
+
+  for (var index in api) { registerFactory(index); }
 });
