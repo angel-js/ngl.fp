@@ -101,3 +101,20 @@ var bar = nglCopy(foo);
 bar // { x: 10, y: 20 }
 foo === bar // false
 ```
+
+### `nglNoop() -> nil`
+
+A no-operation function that returns `undefined` regardless of the arguments it
+receives
+
+```js
+nglNoop(1, 2, 3) // undefined
+```
+
+Returns the first provided argument
+
+### `nglIdentity(value) -> value`
+
+```js
+nglIdentity(1, 2, 3) // 1
+```

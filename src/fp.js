@@ -4,6 +4,9 @@
   var slice = [].slice;
   var isArray = Array.isArray;
 
+  var noop = function () {};
+  var identity = function (value) { return value; };
+
   var isDefined = function (value) {
     return typeof value !== 'undefined';
   };
@@ -84,7 +87,11 @@
 
     // lang
     nglMerge: merge,
-    nglCopy: merge
+    nglCopy: merge,
+
+    // util
+    nglNoop: noop,
+    nglIdentity: identity
   });
 
 })(function register (api) {
