@@ -48,7 +48,8 @@
 
   var map = function (iteratee, list) {
     return reduce(function (acc, item, index) {
-      return acc[index] = iteratee(item, index);
+      acc[index] = iteratee(item, index);
+      return acc;
     }, isArray(list) ? [] : {}, list);
   };
 
