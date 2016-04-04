@@ -100,9 +100,11 @@
 
   var fp = angular.module('ngl.fp', []);
 
-  for (var method in api) {
+  var registerFactory = function (method) {
     fp.factory(method, function () {
       return api[method];
     });
-  }
+  };
+
+  for (var index in api) { registerFactory(index); }
 });
